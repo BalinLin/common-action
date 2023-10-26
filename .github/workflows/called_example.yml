@@ -18,3 +18,9 @@ jobs:
         run: |
           make echo_hello_world
           echo ${{ inputs.sites }}
+
+      - name: Pushd
+        run: |
+          $PWD
+          pushd ..
+          popd
