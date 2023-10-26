@@ -1,4 +1,5 @@
 name: Called Example
+run-name: Called ${{ inputs.sites }}
 
 on:
   workflow_call:
