@@ -14,13 +14,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.0
-      - name: Reusing workflows
+
+      - name: Make
         run: |
           make echo_hello_world
           echo ${{ inputs.sites }}
 
       - name: Pushd
         run: |
+          ls -l
           $PWD
-          pushd ..
+          pushd .github
+          ls -l
+          $PWD
           popd
+          ls -l
+          $PWD
