@@ -24,7 +24,7 @@ jobs:
         run: |
           ls -l
           $PWD
-          pushd .github
+          pushd ansible
           ls -l
           $PWD
           popd
