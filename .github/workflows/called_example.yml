@@ -17,3 +17,4 @@ jobs:
       - name: Reusing workflows
         run: |
           make echo_hello_world
+          echo ${{ inputs.sites }}
