@@ -20,13 +20,19 @@ jobs:
           make echo_hello_world
           echo ${{ inputs.sites }}
 
-      - name: Pushd
+      - name: PWD
         run: |
           ls -l
           $PWD
+
+      - name: pushd
+        run: |
           pushd ansible
           ls -l
           $PWD
+
+      - name: popd
+        run: |
           popd
           ls -l
           $PWD
