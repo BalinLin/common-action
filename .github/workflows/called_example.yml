@@ -27,12 +27,6 @@ jobs:
 
       - name: pushd
         run: |
-          pushd ansible
-          ls -l
-          echo "$PWD"
-
-      - name: popd
-        run: |
-          popd
+          pushd ansible && ls -l && popd
           ls -l
           echo "$PWD"
