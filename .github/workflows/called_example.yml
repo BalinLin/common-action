@@ -32,13 +32,13 @@ jobs:
       - name: Echo build_branch
         run: |
           echo ${{ inputs.build_branch }}
-          echo ${{ inputs.build_branch == 'master' }}
+          echo ${{ inputs.build_branch == 'main' }}
           echo ${{ inputs.build_branch == 'dev'}}
-          echo ${{ inputs.build_branch == 'master' }} || ${{ inputs.build_branch == 'dev'}}
+          echo ${{ inputs.build_branch == 'main' }} || ${{ inputs.build_branch == 'dev'}}
 
 
       - name: Set build_number_prefix environment
-        if: inputs.build_branch == 'main' || inputs.build_branch == 'dev'
+        if: ${{ inputs.build_branch }} == 'main' || ${{ inputs.build_branch }} == 'dev'
         run: echo "build_number_prefix=${{ inputs.build_branch }}" >> "$GITHUB_ENV"
 
       - name: Generate build number
