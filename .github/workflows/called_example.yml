@@ -4,7 +4,7 @@ run-name: Called ${{ inputs.sites }}
 on:
   workflow_call:
     inputs:
-      sites:
+      build_branch:
         required: true
         type: string
 
@@ -28,6 +28,13 @@ jobs:
       - name: pushd
         run: |
           make echo_pushd
+
+      - name: Echo build_branch
+        run: echo ${{ inputs.build_branch }}
+
+      - name: Set build_number_prefix environment
+        if: ${{ inputs.build_branch }} == 'master' or ${{ inputs.build_branch }} == 'dev'
+        run: echo "build_number_prefix=${{ inputs.build_branch }}" >> "$GITHUB_ENV"
 
       - name: Generate build number
         uses: onyxmueller/build-tag-number@v1.0.2
