@@ -33,8 +33,11 @@ jobs:
         run: |
           echo ${{ inputs.build_branch }}
           echo ${{ inputs.build_branch == 'main' }}
+          echo ${{ inputs.build_branch }} == 'main'
           echo ${{ inputs.build_branch == 'dev'}}
+          echo ${{ inputs.build_branch }} == 'dev'
           echo ${{ inputs.build_branch == 'main' }} || ${{ inputs.build_branch == 'dev'}}
+          echo ${{ inputs.build_branch }} == 'main' || ${{ inputs.build_branch }} == 'dev'
 
 
       - name: Set build_number_prefix environment
