@@ -18,7 +18,7 @@ jobs:
       - name: Make
         run: |
           make echo_hello_world
-          echo ${{ inputs.sites }}
+          echo ${{ inputs.build_branch }}
 
       - name: PWD
         run: |
