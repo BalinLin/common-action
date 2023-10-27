@@ -30,7 +30,12 @@ jobs:
           make echo_pushd
 
       - name: Echo build_branch
-        run: echo ${{ inputs.build_branch }}
+        run: |
+          echo ${{ inputs.build_branch }}
+          echo ${{ inputs.build_branch == 'master' }}
+          echo ${{ inputs.build_branch == 'dev'}}
+          echo ${{ inputs.build_branch == 'master' }} || ${{ inputs.build_branch == 'dev'}}
+
 
       - name: Set build_number_prefix environment
         if: ${{ inputs.build_branch == 'master' }} || ${{ inputs.build_branch == 'dev'}}
