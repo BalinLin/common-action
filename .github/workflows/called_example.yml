@@ -12,6 +12,11 @@ jobs:
   myjob:
     runs-on: ubuntu-latest
     steps:
+      - name: Set build branch regions if triggered manually
+        if: github.event_name == 'workflow_dispatch' ###
+        run: |
+          echo "BUILD_BRANCH=${{ inputs.build_branch }}" >> "$GITHUB_ENV"
+          
       - name: Checkout
         uses: actions/checkout@v3.5.0
 
