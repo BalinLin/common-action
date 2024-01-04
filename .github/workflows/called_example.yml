@@ -22,7 +22,7 @@ jobs:
           echo "${{ github.event_name }}"
           
       - name: Set build branch regions if triggered manually
-        if: ${{ inputs.manual }}
+        if: ${{ inputs.manual != '' }}
         run: |
           echo "BUILD_BRANCH=${{ inputs.build_branch }}" >> "$GITHUB_ENV"
           
