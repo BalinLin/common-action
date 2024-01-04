@@ -4,22 +4,31 @@ run-name: Called ${{ inputs.sites }}
 on:
   workflow_call:
     inputs:
-      build_branch:
+      build_branch_call:
         required: true
         type: string
-
+  workflow_dispatch:
+    inputs:
+      build_branch:
+        type: string
+        required: true
+        
 jobs:
   myjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
+      - name: Echo github.event_name
         run: |
           echo "${{ github.event_name }}"
           
       - name: Set build branch regions if triggered manually
-        if: github.event_name == 'workflow_dispatch'
+        if: ${{ inputs.manual }}
         run: |
           echo "BUILD_BRANCH=${{ inputs.build_branch }}" >> "$GITHUB_ENV"
+          
+      - name: Echo BUILD_BRANCH
+        run: |
+          echo "${{ env.BUILD_BRANCH }}"
           
       - name: Checkout
         uses: actions/checkout@v3.5.0
