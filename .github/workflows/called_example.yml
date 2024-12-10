@@ -45,6 +45,14 @@ jobs:
         run: |
           echo "${{ env.SETTER }}"
 
+      - name: Shell
+        run: |
+          sh script.sh
+
+      - name: Echo ENV after shell script
+        run: |
+          echo "${{ env.SETTER }}"
+
       - name: Set ENV
         run: |
           echo "SETTER=echo_hello_world" >> $GITHUB_ENV
